@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somando</title>
+    <style>
+        #content{
+            display: flex;
+            align-items: center;
+        }
+
+        #igual{
+            width: 15vw;
+            height: 5vh;
+            margin-top: 2vh;
+        }
+
+        input{
+            height: 5vh;
+            margin: 5px;
+        }
+    
+    </style>
+</head>
+<body>
+    <H1>Somando Valores</H1>
+    <div id="content">
+        <input type="number" name="n1" id="n1">
+        <h1>+</h1>
+        <input type="number" name="n2" id="n2" >
+        <input type="button" name="igual" id="igual" value="somar"><br>
+    </div>
+    <div id="res"></div>
+    <script>
+        
+        var soma = document.getElementById('igual')
+        soma.addEventListener('click', somar)
+
+        function somar(){
+            var n1 = document.getElementById('n1')
+            var n2 = document.getElementById('n2')
+            var res = document.getElementById('res')
+           
+            var s1 = Number(n1.value)
+            var s2 = Number(n2.value)
+            var resultado = s1 + s2
+            res.innerHTML = 'O resultado é: ' + resultado
+        }
+    </script>
+</body>
+</html>
