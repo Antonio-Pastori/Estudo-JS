@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detran</title>
+</head>
+<body>
+    <h1>Sistema de Multa Detran</h1>
+    <input type="number" name="vel" id="vel">
+    <input type="button" name="enviar" id="enviar" value="Enviar">
+    <div id="multa">
+    </div>
+<script>
+    
+    var send = document.getElementById('enviar')
+    
+    send.addEventListener('click', VerificarMulta)
+
+    function VerificarMulta(){
+        var txtvel = document.getElementById('vel')
+        var vel = Number(txtvel.value)
+        var multa = document.getElementById('multa')
+        if (vel > 60) {
+            multa.innerHTML = `Você está a ${vel} KM/H, logo, será multado!` 
+        }else{
+            multa.innerHTML = `Você está a ${vel} KM/H, logo, não levou multa!`
+        }
+    }
+</script>
+</body>
+</html>

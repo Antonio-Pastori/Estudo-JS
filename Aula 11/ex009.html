@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificação de Nacionalidade</title>
+</head>
+<body>
+    <h1>Verificação de Nacionalidade</h1>
+    <input type="text" name="pais" id="pais" placeholder="Digite seu país de nascença">
+    <input type="button" name="enviar" id="enviar" value="Enviar">
+    <div id="res"></div>
+    <script>
+        var send = document.getElementById('enviar')
+        send.addEventListener('click', VerrificarNacionalidade)
+        
+
+        function VerificaPronome(){
+            var paistxt = document.getElementById('pais')
+            var pais = paistxt.value
+            var lastc = pais.slice(-1)
+            console.log(lastc)
+
+            if(lastc == "a"){
+                return "na"
+            }
+            else if(lastc == "s"){
+                return "nos"
+            }
+            else{
+                return "no"
+            }
+            
+        }
+        function VerrificarNacionalidade(){
+            var res = document.getElementById('res')
+            var paistxt = document.getElementById('pais')
+            var pais = paistxt.value
+            var paism = pais.toLowerCase()
+            var pronome = VerificaPronome()
+            if (paism == "brasil") {
+                res.innerHTML = "<p>Você nasceu no Brasil, logo, é <strong>brasileiro</strong>!</p>"
+            }else{
+                res.innerHTML = `<p>Você nasceu ${pronome} ${pais}, logo, é <strong>estrangeiro</strong>!</p>`
+            }
+        }
+    </script>
+</body>
+</html>
