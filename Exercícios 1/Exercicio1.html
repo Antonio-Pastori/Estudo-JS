@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horário</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #content{
+            background-color: whitesmoke;
+            width: 70vw;
+            height: 70vh;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px 1px  black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: black;
+        }
+
+        #imagem{
+            border-radius: 30vw;
+            width: 35vw;
+            height: 35vh;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hora do Dia</h1>
+    <div id="content">
+        <div id="horas"></div>
+        <div id="imagem"></div>
+    </div>
+    <h4>@SharkJagular</h4>
+    <script>
+        var agr = new Date()
+        var hora = agr.getHours()
+
+
+        var horas = document.getElementById("horas")
+        var img = document.getElementById("imagem")
+        horas.innerHTML = `<p>Agora são ${hora} horas!</p>`
+        
+        if (hora >= 6 && hora < 12) {
+            document.body.style.backgroundColor = "#ed8907"
+            img.style.backgroundImage = "url('../imagens/Ex1/manha.jpg')"
+            img.style.backgroundSize = "cover"
+        }else if(hora >= 12 && hora < 19){
+            document.body.style.backgroundColor = "#3088f2"
+            img.style.backgroundImage = "url('../imagens/Ex1/tarde.jpg')"
+            img.style.backgroundSize = "cover"
+        }else if(hora >= 19 && hora <= 24){
+            document.body.style.backgroundColor = "#060b75"
+            img.style.backgroundImage = "url('../imagens/Ex1/noite.avif')"
+            img.style.backgroundSize = "cover"
+        }else if(hora >= 1 && hora < 6){
+            document.body.style.backgroundColor = "black"
+            img.style.backgroundImage = "url('../imagens/Ex1/madruga.jpg')"
+            img.style.backgroundSize = "cover"
+        }
+    </script>
+</body>
+</html>
