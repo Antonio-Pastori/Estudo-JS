@@ -3,14 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Verificar Idade</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: rgb(3, 114, 199);
+            color: white;
+        }
+
+        #content{
+            background-color: whitesmoke;
+            width: 50vw;
+            height: 70vh;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px 1px  black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: black;
+        }
+
+        #imagem{
+            border-radius: 30vw;
+            width: 25vw;
+            height: 25vh;
+            background-color: red;
+        }
+        #forms{
+            width: 70vw;
+            height: 20vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #res{
+            width: 70vw;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            
+        }
+        #img{
+            width: 30vw;
+            height: 30vh;
+            background-color: white;
+            border-radius: 50%;
+            visibility: hidden;
+        }
+    </style>
 </head>
 <body>
-    <h1>Titulo</h1>
+    <h1>Verificação de Idade</h1>
     <div id="content">
-        
+        <div id="forms">
+            <form>
+                <label>Ano de Nascimento:
+                    <input type="text" name="ano" id="ano">
+                </label>
+                <br>
+                <label>Sexo:
+                    <input type="radio" value="homem" name="sexo" id="masculino">Masculino
+                    <input type="radio" value="mulher" name="sexo" id="feminino">Feminino
+                </label>
+                <br>
+                <input type="button" name="enviar" id="enviar" value="Enviar">
+            </form>
+        </div>
+        <div id="res">
+            <p id="textin">Preencha os detalhes acima!</p>
+            <div id="img"></div>
+        </div>
     </div>
     <h4>@SharkJagular</h4>
-    
+    <script>
+        var send = document.getElementById("enviar")
+        send.addEventListener("click", VerificaIdade)
+
+        function CalculaIdade(){
+            var data = new Date()
+            var anoAtual = data.getFullYear()
+            var anoo = Number(anoAtual)
+        
+            var borntxt = document.getElementById("ano")
+            var born = Number(borntxt.value)
+
+            var idade = anoAtual - born
+
+            return idade
+        }
+        function VerificaIdade(){
+            var idade = CalculaIdade()
+            //console.log(idade)
+            var img = document.getElementById("img")
+            var sexo = document.querySelector("input[name='sexo']:checked")
+            var res = document.getElementById("textin")
+            
+            switch (sexo.value) {
+                case "homem":
+                    res.innerText = `Detectado um Homem com ${idade} anos!`
+                    if (idade <= 12) {
+                        img.style.backgroundImage = "url('../imagens/Ex2/Criança Homi.jpg')"
+                        img.style.backgroundSize = "cover"
+                    }else if(idade > 12 && idade < 18){
+                        img.style.backgroundImage = "url('../imagens/Ex2/Adole Homi.jpeg')"
+                        img.style.backgroundSize = "cover"
+                    }else if(idade >= 18 && idade < 60){
+                        img.style.backgroundImage = "url('../imagens/Ex2/Adulto Homi.avif')"
+                        img.style.backgroundSize = "cover"
+                    }else if(idade >= 60){
+                        img.style.backgroundImage = "url('../imagens/Ex2/Veio.jpg')"
+                        img.style.backgroundSize = "cover"
+                    }
+                    img.style.visibility = "visible"
+                break
+                case "mulher":
+                    res.innerText = `Detectada uma Mulher com ${idade} anos!`
+                    if (idade <= 12) {
+                        img.style.backgroundImage = "url('../imagens/Ex2/Criança Muie.jpeg')"
+                        img.style.backgroundSize = "cover"
+                    }else if(idade > 12 && idade < 18){
+                        img.style.backgroundImage = "url('../imagens/Ex2/Adole Muie.jpg')"
+                        img.style.backgroundSize = "cover"
+                    }else if(idade >= 18 && idade < 60){
+                        img.style.backgroundImage = "url('../imagens/Ex2/Adulta Muie.avif')"
+                        img.style.backgroundSize = "cover"
+                    }else if(idade >= 60){
+                        img.style.backgroundImage = "url('../imagens/Ex2/Veia.png')"
+                        img.style.backgroundSize = "cover"
+                    }
+                    img.style.visibility = "visible"
+                break        
+            
+        }
+        }
+    </script>
 </body>
 </html>
